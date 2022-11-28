@@ -1,0 +1,2 @@
+module PartyGameGamesHelper
+end

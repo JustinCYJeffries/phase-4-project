@@ -1,0 +1,2 @@
+class PartyGameUsersController < ApplicationController
+end

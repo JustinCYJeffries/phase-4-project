@@ -1,0 +1,2 @@
+class PartyGameGamesController < ApplicationController
+end

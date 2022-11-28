@@ -1,0 +1,2 @@
+class PartyGame < ApplicationRecord
+end
