@@ -16,7 +16,7 @@ class PartyGamesController < ApplicationController
     def create 
         user = @current_user
         party_game = user.party_game.create(party_game_params)
-        partygame_user = user.bookclub_users.find_by(bookclub_id: bookclub.id)
+        partygame_user = user.partygame_user.find_by(party_game_id: party_game.id)
         partygame_user.isAdmin = true
         partygame_user.save
         
@@ -30,8 +30,8 @@ class PartyGamesController < ApplicationController
     end
 
     def update 
-        party-game = PartyGame.find(params[:id])
-        party-game.update(bookclub_params)
+        party_game = PartyGame.find(params[:id])
+        party_game.update(party_game_params)
 
         #check if admin is changed
         admin_party-game_user = party_game.party_game_users.find {|user| user.isAdmin == true }
@@ -60,14 +60,14 @@ class PartyGamesController < ApplicationController
             end
         end
 
-        render json: bookclub, include: ['users', 'party_games', 'party_games.game', 'party_games_games.trackers', 'party_games_games.helpmes', 'party_game_game.helpmes.comments'], status: :accepted
+        render json: party_game, include: ['users', 'party_games', 'party_games.game', 'party_games_games.trackers', 'party_games_games.helpmes', 'party_game_game.helpmes.comments'], status: :accepted
     end
 
 
-    def current_book
+    def current_game
         party_game = PartyGame.find(params[:id])
         new_current_game = party_game.party_game_game.find(params[:new_party_game_game_id])
-        old_current_book = party_game.party_game_game.find_by(current: true)
+        old_current_game = party_game.party_game_game.find_by(current: true)
 
         if old_current_game
             old_current_game.update(current: false, archived: true)

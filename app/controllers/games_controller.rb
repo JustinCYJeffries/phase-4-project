@@ -3,7 +3,7 @@ class GamesController < ApplicationController
     before_action :set_game, only: [:show, :update, :destroy]
 
     def create 
-        game = Game.create(book_params)
+        game = Game.create(game_params)
 
         party_game_game = game.party_game_game.create(party_game_game_params)
         party_game_game.archived = false

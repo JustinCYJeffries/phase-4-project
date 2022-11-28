@@ -22,7 +22,7 @@ class PartyGameGamesController < ApplicationController
 
     private 
 
-    def bookclub_book_params 
+    def party_game_game_params 
         params.permit(:party_game_id, :game_id, :archived, :status, :current)
     end
 

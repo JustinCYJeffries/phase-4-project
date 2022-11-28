@@ -3,7 +3,7 @@ class HelpmesController < ApplicationController
     before_action :set_helpme, only: [:destroy, :show]
 
     def create 
-        party_game_game = PartyGameGame.find(params[:bookclub_book_id])
+        party_game_game = PartyGameGame.find(params[:party_game_game_id])
         question = party_game_game.helpme_questions.create(question_params)
         render json: question, status: :created
     end
