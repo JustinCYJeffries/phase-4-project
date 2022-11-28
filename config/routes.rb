@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  namespace :api do
+
     resources :users, only: [:index, :destroy, :update]
     post "/signup", to: "users#create"
     get "/me", to: "users#show"
@@ -21,6 +21,6 @@ Rails.application.routes.draw do
 
     resources :comments, only: [:create, :destroy]
     
-  end
+ 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
